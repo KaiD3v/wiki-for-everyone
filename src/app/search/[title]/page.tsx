@@ -35,7 +35,7 @@ export default async function SearchPage({
 
       <div className="text-black mt-8">
         <h1 className="text-3xl font-bold text-center mb-8">
-          Resultados da sua pesquisa para "{title}"
+          Resultados da sua pesquisa para "{decodeURI(title)}"
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {data && data.length > 0
