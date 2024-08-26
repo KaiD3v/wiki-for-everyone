@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   FaAudioDescription,
   FaEye,
@@ -7,9 +8,11 @@ import {
 
 export function Sidebar() {
   return (
-    <aside className="text-white bg-black relative w-full h-screen max-w-20 transition-all duration-300 sm:max-w-60 md:max-w-96">
+    <aside className="text-white bg-black relative w-full max-h-screen max-w-20 transition-all duration-300 sm:max-w-60 md:max-w-96">
       <header className="hidden sm:flex flex-col m-6 justify-center items-center gap-3">
-        <h1 className="font-extralight sm:text-2xl">WikiForEveryone</h1>
+        <Link href={"/"}>
+          <h1 className="font-extralight sm:text-2xl">WikiForEveryone</h1>
+        </Link>
         <hr className="w-full border-t-2 border-gray-500" />
       </header>
       <section className="sm:hidden flex flex-col h-full">
