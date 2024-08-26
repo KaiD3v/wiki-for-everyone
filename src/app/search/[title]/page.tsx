@@ -1,15 +1,18 @@
+import Image from "next/image";
 import { Container } from "../../../components/Container";
 import { Search } from "../../../components/Search";
+import { PageData } from "../../../utils/types/PageData";
+import Link from "next/link";
 
 async function getPages(title: string) {
   try {
     const response = await fetch(
-      `${process.env.WIKI_API_URL}/page?q=${title}&limit=10`
-    );
+      `${process.env.WIKI_API_URL}/page?q=${title}&limit=12`
+    ).then(res => res.json());
 
     console.log(title);
 
-    return response.json();
+    return response.pages;
   } catch (error) {
     console.log("Houve um erro ao buscar pela pesquisa:" + error);
     return null;
@@ -21,16 +24,43 @@ export default async function SearchPage({
 }: {
   params: { title: string };
 }) {
-  const data = await getPages(title);
+  const data: PageData[] = await getPages(title);
 
   console.log(data);
   return (
     <Container>
-      <Search />
-      <div className="text-black">
-        <h1>
-          {title}
+      <div className="search-container mb-8">
+        <Search />
+      </div>
+
+      <div className="text-black mt-8">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          Resultados da sua pesquisa para "{title}"
         </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          {data && data.length > 0
+            ? data.map(item =>
+                <Link
+                  className="bg-white min-h-30 max-h-30 cursor-pointer overflow-hidden rounded-lg shadow-md p-4 flex flex-col hover:bg-blue-200 transition-all duration-300"
+                  key={item.id}
+                  href={`/pages/${item.id}`}
+                >
+                  <header className="mb-4">
+                    <h2 className="text-xl font-semibold text-gray-800">
+                      {item.title}
+                    </h2>
+                  </header>
+                  <main className="flex-1">
+                    <p className="text-gray-600">
+                      {item.description || "Sem descrição disponível."}
+                    </p>
+                  </main>
+                </Link>
+              )
+            : <p className="text-center col-span-full text-gray-500">
+                Nenhum resultado encontrado para "{title}".
+              </p>}
+        </div>
       </div>
     </Container>
   );

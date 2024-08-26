@@ -4,5 +4,7 @@ export interface PageData {
   title: string;
   exerpt: InnerHTML;
   description: string;
-  thumbnail: [Object];
+  thumbnail: {
+    url: string;
+  };
 }

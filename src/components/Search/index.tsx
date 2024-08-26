@@ -57,7 +57,7 @@ export function Search() {
   }
 
   return (
-    <form className="flex flex-col items-center justify-center gap-5 h-screen p-4">
+    <form className="flex flex-col items-center justify-center gap-5 p-4 mt-16">
       <h1 className="font-extralight text-2xl sm:text-4xl mb-6">
         WikiForEveryone
       </h1>
