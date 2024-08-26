@@ -1,12 +1,29 @@
 import { Container } from "../../../components/Container";
 import { Search } from "../../../components/Search";
 
-export default function SearchPage({
+async function getPages(title: string) {
+  try {
+    const response = await fetch(
+      `${process.env.WIKI_API_URL}/page?q=${title}&limit=10`
+    );
+
+    console.log(title);
+
+    return response.json();
+  } catch (error) {
+    console.log("Houve um erro ao buscar pela pesquisa:" + error);
+    return null;
+  }
+}
+
+export default async function SearchPage({
   params: { title }
 }: {
   params: { title: string };
 }) {
-  console.log("Title prop:", title);
+  const data = await getPages(title);
+
+  console.log(data);
   return (
     <Container>
       <Search />
