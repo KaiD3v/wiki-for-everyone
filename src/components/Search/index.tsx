@@ -1,6 +1,6 @@
 "use client";
 
-import { EventHandler, useState } from "react";
+import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa6";
 
 let speechRecognition: SpeechRecognition | null = null;
@@ -9,11 +9,19 @@ export function Search() {
   const [searchInput, setSearchInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
 
-  async function voiceSearch(e: any) {
+  function stopVoiceSearch(e: any) {
+    e.preventDefault();
+    setIsRecording(false);
+
+    if (speechRecognition) {
+      speechRecognition.stop();
+    }
+  }
+
+  function voiceSearch(e: any) {
     e.preventDefault();
     setIsRecording(true);
 
-    // Verificação de disponibilidade da API com e sem prefixo
     const isSpeechRecognitionAPIAvailable =
       "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
 
@@ -22,7 +30,6 @@ export function Search() {
       return;
     }
 
-    // Uso da API disponível (com ou sem prefixo)
     const SpeechRecognitionAPI =
       window.SpeechRecognition || (window.webkitSpeechRecognition as any);
 
@@ -61,7 +68,12 @@ export function Search() {
           onChange={e => setSearchInput(e.target.value)}
           value={searchInput}
         />
-        <button onClick={voiceSearch} className="p-3 transition-colors">
+        <button
+          onClick={!isRecording ? voiceSearch : stopVoiceSearch}
+          className={`p-3 transition-colors ${isRecording
+            ? "bg-red-500"
+            : "focus:bg-gray-500"}`}
+        >
           <FaMicrophone color="#000" size={24} />
         </button>
       </div>
