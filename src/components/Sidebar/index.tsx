@@ -8,7 +8,7 @@ import {
 
 export function Sidebar() {
   return (
-    <aside className="text-white bg-black relative w-full max-h-full max-w-20 transition-all duration-300 sm:fixed sm:h-screen sm:max-w-60 md:max-w-96">
+    <aside className="text-white bg-black relative w-full max-h-full max-w-20 transition-all duration-300 h-auto sm:max-w-60 md:max-w-96">
       <header className="hidden sm:flex flex-col m-6 justify-center items-center gap-3">
         <Link href={"/"}>
           <h1 className="font-extralight sm:text-2xl">WikiForEveryone</h1>
