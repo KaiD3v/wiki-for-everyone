@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa6";
 
@@ -77,12 +78,12 @@ export function Search() {
           <FaMicrophone color="#000" size={24} />
         </button>
       </div>
-      <button
-        className="bg-white rounded-md overflow-hidden shadow-lg w-full max-w-7xl py-2 hover:shadow-amber-200 transition-all duration-300"
-        type="submit"
+      <Link
+        className="bg-white text-center text-black font-semibold rounded-md overflow-hidden shadow-lg w-full max-w-7xl py-2 px-4 border border-gray-300 hover:shadow-amber-200 hover:bg-gray-100 transition-all duration-300 cursor-pointer"
+        href={`/search/${searchInput}`}
       >
         Pesquisar
-      </button>
+      </Link>
     </form>
   );
 }
