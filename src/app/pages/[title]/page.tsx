@@ -1,3 +1,4 @@
+import { Container } from "../../../components/Container";
 import { PageProps } from "../../../utils/types/PagesTypes";
 
 async function getPageData(title: string) {
@@ -22,10 +23,20 @@ export default async function WikiPage({
 
   console.log(pageData);
   return (
-    <main>
-      <h1>
-        {decodeURI(title)}
-      </h1>
-    </main>
+    <Container>
+      <main className="min-h-screen bg-gray-50 p-8 flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
+          {decodeURI(title)}
+        </h1>
+        <div className="w-full max-w-5xl bg-white p-6 rounded-lg shadow-md">
+          <iframe
+            srcDoc={pageData.html}
+            style={{ width: "100vh", height: "75vh", border: "none" }}
+            className="min-h-[500px] rounded-lg"
+            sandbox="allow-scripts allow-same-origin"
+          />
+        </div>
+      </main>
+    </Container>
   );
 }

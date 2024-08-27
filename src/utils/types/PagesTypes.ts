@@ -17,5 +17,5 @@ export interface PageProps {
     id: number;
     timestamp: Date;
   };
-  source: InnerHTML
+  html: any
 }
