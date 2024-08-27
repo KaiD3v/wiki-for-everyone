@@ -7,7 +7,7 @@ import Link from "next/link";
 async function getPages(title: string) {
   try {
     const response = await fetch(
-      `${process.env.WIKI_API_URL}/page?q=${title}&limit=12`
+      `${process.env.WIKI_API_URL}/search/page?q=${title}&limit=12`
     ).then(res => res.json());
 
     console.log(title);
