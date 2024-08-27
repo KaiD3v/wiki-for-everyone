@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "../../../components/Container";
 import { Search } from "../../../components/Search";
-import { PageData } from "../../../utils/types/PageData";
+import { PagesProps } from "../../../utils/types/PagesTypes";
 import Link from "next/link";
 
 async function getPages(title: string) {
@@ -24,7 +24,7 @@ export default async function SearchPage({
 }: {
   params: { title: string };
 }) {
-  const data: PageData[] = await getPages(title);
+  const data: PagesProps[] = await getPages(title);
 
   console.log(data);
   return (
