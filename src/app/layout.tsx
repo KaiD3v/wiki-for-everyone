@@ -17,9 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className='flex bg-gray-300'>
-      <Sidebar />
-        {children}
+      <body className={`flex h-screen bg-gray-300 ${inter.className}`}>
+        <Sidebar />
+        <main className="flex-grow overflow-y-auto p-8">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -26,7 +26,7 @@ export default async function WikiPage({
     <Container>
       <main className="min-h-screen bg-gray-50 p-8 flex flex-col items-center">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
-          {decodeURI(title)}
+          {pageData.title}
         </h1>
         <div className="w-full max-w-5xl bg-white p-6 rounded-lg shadow-md">
           <iframe
