@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa6";
 
@@ -29,6 +29,12 @@ export function Search() {
     if (!isSpeechRecognitionAPIAvailable) {
       alert("Infelizmente seu navegador não suporta a API de navegação");
       return;
+    }
+
+    function handleSubmit(e: any) {
+      e.preventDefault();
+
+      redirect(`/search/${searchInput}`);
     }
 
     const SpeechRecognitionAPI =
@@ -78,12 +84,13 @@ export function Search() {
           <FaMicrophone color="#000" size={24} />
         </button>
       </div>
-      <Link
+      <button
         className="bg-white text-center text-black font-semibold rounded-md overflow-hidden shadow-lg w-full max-w-7xl py-2 px-4 border border-gray-300 hover:shadow-amber-200 hover:bg-gray-100 transition-all duration-300 cursor-pointer"
-        href={`/search/${searchInput}`}
+        onKeyDown={e => e.key == "enter"}
+        type="submit"
       >
         Pesquisar
-      </Link>
+      </button>
     </form>
   );
 }
