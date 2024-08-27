@@ -1,6 +1,5 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa6";
 
@@ -9,6 +8,11 @@ let speechRecognition: SpeechRecognition | null = null;
 export function Search() {
   const [searchInput, setSearchInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    window.location.href = `/search/${searchInput}`;
+  }
 
   function stopVoiceSearch(e: any) {
     e.preventDefault();
@@ -29,12 +33,6 @@ export function Search() {
     if (!isSpeechRecognitionAPIAvailable) {
       alert("Infelizmente seu navegador não suporta a API de navegação");
       return;
-    }
-
-    function handleSubmit(e: any) {
-      e.preventDefault();
-
-      redirect(`/search/${searchInput}`);
     }
 
     const SpeechRecognitionAPI =
@@ -63,7 +61,10 @@ export function Search() {
   }
 
   return (
-    <form className="flex flex-col items-center justify-center gap-5 p-4 mt-16">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center justify-center gap-5 p-4 mt-16"
+    >
       <h1 className="font-extralight text-2xl sm:text-4xl mb-6">
         WikiForEveryone
       </h1>
@@ -86,7 +87,6 @@ export function Search() {
       </div>
       <button
         className="bg-white text-center text-black font-semibold rounded-md overflow-hidden shadow-lg w-full max-w-7xl py-2 px-4 border border-gray-300 hover:shadow-amber-200 hover:bg-gray-100 transition-all duration-300 cursor-pointer"
-        onKeyDown={e => e.key == "enter"}
         type="submit"
       >
         Pesquisar
