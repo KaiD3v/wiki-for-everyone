@@ -43,7 +43,7 @@ export default async function SearchPage({
                 <Link
                   className="bg-white min-h-30 max-h-30 cursor-pointer overflow-hidden rounded-lg shadow-md p-4 flex flex-col hover:bg-blue-200 transition-all duration-300"
                   key={item.id}
-                  href={`/pages/${item.id}`}
+                  href={`/pages/${item.title}`}
                 >
                   <header className="mb-4">
                     <h2 className="text-xl font-semibold text-gray-800">
