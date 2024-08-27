@@ -11,6 +11,7 @@ export function Search() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
+    if (searchInput === "") return;
     window.location.href = `/search/${searchInput}`;
   }
 
