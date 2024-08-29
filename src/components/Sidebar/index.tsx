@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   FaAudioDescription,
@@ -5,8 +7,15 @@ import {
   FaHandFist,
   FaMicrophone
 } from "react-icons/fa6";
+import { useVLibras } from "../../context/LibrasContext";
 
 export function Sidebar() {
+  const { isActive, setIsActive } = useVLibras();
+
+  const handleVLibrasToggle = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <aside className="sticky top-0 h-screen text-white bg-black w-full max-w-20 sm:max-w-60 md:max-w-96">
       <div className="flex flex-col h-full overflow-hidden">
@@ -29,7 +38,7 @@ export function Sidebar() {
             <ul className="flex flex-col text-center justify-center items-center gap-5">
               <li className="cursor-pointer">
                 <div className="p-2 bg-gray-700 rounded-sm hover:bg-gray-600 transition-colors">
-                  <FaHandFist size={32} />
+                  <FaHandFist onClick={handleVLibrasToggle} size={32} />
                 </div>
               </li>
               <li className="cursor-pointer">
@@ -55,7 +64,7 @@ export function Sidebar() {
           <h1 className="font-extralight sm:text-2xl mr-10">Ferramentas</h1>
           <ul className="text-lg font-extralight">
             <li>
-              <button>Libras</button>
+              <button onClick={handleVLibrasToggle}>Libras</button>
             </li>
             <li>
               <button>Leitura em voz alta</button>

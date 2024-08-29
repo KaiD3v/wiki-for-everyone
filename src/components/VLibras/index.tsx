@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
+import { useVLibras } from "../../context/LibrasContext";
 
 export function VLibrasComponent() {
+  const vLibras = useVLibras();
   useEffect(() => {
     // Carregar o script VLibras
 
@@ -24,7 +26,10 @@ export function VLibrasComponent() {
   return (
     // @ts-ignore
     <div vw="true" className="enabled">
-      <div vw-access-button="true" className="active" />
+      <div
+        vw-access-button="true"
+        className={`${vLibras.isActive ? "active" : "inactive"}`}
+      />
       <div vw-plugin-wrapper="true">
         <div className="vw-plugin-top-wrapper" />
       </div>
