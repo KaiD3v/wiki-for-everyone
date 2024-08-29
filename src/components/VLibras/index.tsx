@@ -12,7 +12,6 @@ export function VLibrasComponent() {
     script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
     script.defer = true;
     script.async = true;
-    script.crossOrigin = "anonymous";
     script.onload = () => {
       // @ts-ignore
       new window.VLibras.Widget("https://vlibras.gov.br/app");
