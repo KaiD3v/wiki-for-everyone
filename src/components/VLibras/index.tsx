@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect } from "react";
 import { useVLibras } from "../../context/LibrasContext";
 
 export function VLibrasComponent() {
-  const vLibras = useVLibras();
+  const { isActive } = useVLibras();
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
@@ -25,7 +25,7 @@ export function VLibrasComponent() {
     <div vw="true" className="enabled">
       <div
         vw-access-button="true"
-        className={`${vLibras.isActive ? "active" : "inactive"}`}
+        className={`${isActive ? "active" : "inactive"}`}
       />
       <div vw-plugin-wrapper="true">
         <div className="vw-plugin-top-wrapper" />

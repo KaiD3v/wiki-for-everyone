@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Container } from "../../../components/Container";
 import { Search } from "../../../components/Search";
 import { PagesProps } from "../../../utils/types/PagesTypes";

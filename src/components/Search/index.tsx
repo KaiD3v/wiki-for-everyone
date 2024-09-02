@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 let speechRecognition: SpeechRecognition | null = null;
 
 export function Search() {
   const [searchInput, setSearchInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
+  const router = useRouter();
 
-  function handleSubmit(e: any) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (searchInput === "") return;
-    window.location.href = `/search/${searchInput}`;
+    if (searchInput.trim() === "") return;
+    router.push(`/search/${encodeURIComponent(searchInput.trim())}`);
   }
-
   function stopVoiceSearch(e: any) {
     e.preventDefault();
     setIsRecording(false);
