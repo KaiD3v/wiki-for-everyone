@@ -28,9 +28,11 @@ export function Sidebar() {
 
         <section className="sm:hidden flex flex-col">
           <header className="flex flex-col text-center py-4">
-            <h1 className="font-extralight text-start flex flex-col">
-              Wiki <span>For</span> <span>Everyone</span>
-            </h1>
+            <Link href={"/"}>
+              <h1 className="font-extralight text-start flex flex-col">
+                Wiki <span>For</span> <span>Everyone</span>
+              </h1>
+            </Link>
             <hr className="w-full border-t-2 border-gray-500" />
           </header>
 
