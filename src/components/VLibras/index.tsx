@@ -6,8 +6,6 @@ import { useVLibras } from "../../context/LibrasContext";
 export function VLibrasComponent() {
   const vLibras = useVLibras();
   useEffect(() => {
-    // Carregar o script VLibras
-
     const script = document.createElement("script");
     script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
     script.defer = true;

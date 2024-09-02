@@ -23,7 +23,7 @@ export default function RootLayout({
       <VLibrasProvider>
         <body className={`flex h-screen bg-gray-300 ${inter.className}`}>
           <Sidebar />
-          <main className="flex-grow overflow-y-auto p-8">
+          <main className="flex-grow overflow-y-auto p-2 sm:p-8">
             {children}
             <VLibrasComponent />
           </main>

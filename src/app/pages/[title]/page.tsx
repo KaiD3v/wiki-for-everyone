@@ -23,20 +23,25 @@ export default async function WikiPage({
 
   console.log(pageData);
   return (
-    <Container>
-      <main className="min-h-screen bg-gray-50 p-8 flex flex-col items-center">
+    <div className="flex items-center text-center justify-center w-full h-screen">
+      <main className="hidden sm:flex flex-col justify-center items-center w-full sm:p-8 bg-gray-50 min-h-screen">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
           {pageData.title}
         </h1>
-        <div className="w-full max-w-5xl bg-white p-6 rounded-lg shadow-md">
+        <div className="w-full sm:max-w-6xl bg-white p-6 rounded-lg shadow-md">
           <iframe
             srcDoc={pageData.html}
-            style={{ width: "100vh", height: "75vh", border: "none" }}
-            className="min-h-[500px] rounded-lg"
+            className="w-full min-h-[500px] rounded-lg"
             sandbox="allow-scripts allow-same-origin"
+            style={{ height: "75vh" }}
           />
         </div>
       </main>
-    </Container>
+      <iframe
+        srcDoc={pageData.html}
+        className="block sm:hidden w-screen h-full bg-white rounded-lg shadow-md"
+        sandbox="allow-scripts allow-same-origin"
+      />
+    </div>
   );
 }
