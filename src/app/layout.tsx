@@ -5,6 +5,7 @@ import { Sidebar } from "../components/Sidebar";
 import { VLibrasComponent } from "../components/VLibras";
 import { VLibrasProvider } from "../context/LibrasContext";
 import { SpeechIcon } from "../components/TextToSpeech";
+import { TextToSpeechProvider } from "../context/TextToSpeechIconContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <VLibrasProvider>
+        <TextToSpeechProvider>
         <body className={`flex h-screen bg-gray-300 ${inter.className}`}>
           <Sidebar />
           <main className="flex-grow overflow-y-auto p-2 sm:p-8">
@@ -30,6 +32,7 @@ export default function RootLayout({
             <SpeechIcon />
           </main>
         </body>
+        </TextToSpeechProvider>
       </VLibrasProvider>
     </html>
   );

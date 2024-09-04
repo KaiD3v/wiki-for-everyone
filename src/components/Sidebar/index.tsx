@@ -8,9 +8,18 @@ import {
   FaMicrophone
 } from "react-icons/fa6";
 import { useVLibras } from "../../context/LibrasContext";
+import { useTextToSpeech } from "../../context/TextToSpeechIconContext";
 
 export function Sidebar() {
   const { isActive, setIsActive } = useVLibras();
+  const {
+    isActive: isActiveTextToSpeech,
+    setIsActive: setIsActiveTextToSpeech
+  } = useTextToSpeech();
+
+  const handleTextToSpeechToggle = () => {
+    setIsActiveTextToSpeech(!isActiveTextToSpeech);
+  };
 
   const handleVLibrasToggle = () => {
     setIsActive(!isActive);
@@ -45,7 +54,7 @@ export function Sidebar() {
               </li>
               <li className="cursor-pointer">
                 <div className="p-2 bg-gray-700 rounded-sm hover:bg-gray-600 transition-colors">
-                  <FaMicrophone size={32} />
+                  <FaMicrophone size={32} onClick={handleTextToSpeechToggle} />
                 </div>
               </li>
               <li className="cursor-pointer">
@@ -69,7 +78,9 @@ export function Sidebar() {
               <button onClick={handleVLibrasToggle}>Libras</button>
             </li>
             <li>
-              <button>Leitura em voz alta</button>
+              <button onClick={handleTextToSpeechToggle}>
+                Leitura em voz alta
+              </button>
             </li>
             <li>
               <button>Modo Daltonismo</button>
