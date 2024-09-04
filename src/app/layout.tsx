@@ -4,6 +4,7 @@ import "./globals.css";
 import { Sidebar } from "../components/Sidebar";
 import { VLibrasComponent } from "../components/VLibras";
 import { VLibrasProvider } from "../context/LibrasContext";
+import { SpeechIcon } from "../components/TextToSpeech";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           <main className="flex-grow overflow-y-auto p-2 sm:p-8">
             {children}
             <VLibrasComponent />
+            <SpeechIcon />
           </main>
         </body>
       </VLibrasProvider>
