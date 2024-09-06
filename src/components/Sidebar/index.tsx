@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa6";
 import { useVLibras } from "../../context/LibrasContext";
 import { useTextToSpeech } from "../../context/TextToSpeechIconContext";
+import { useColorBlindnessFilterMenu } from "../../context/ColorBlindnessFilterIconMenuContext";
 
 export function Sidebar() {
   const { isActive, setIsActive } = useVLibras();
@@ -17,6 +18,14 @@ export function Sidebar() {
     setIsActive: setIsActiveTextToSpeech
   } = useTextToSpeech();
 
+  const {
+    isActive: isActiveColorBlindnessMenu,
+    setIsActive: setIsActiveColorBlindnessMenu
+  } = useColorBlindnessFilterMenu();
+
+  const handleColorBlindnessMenuToggle = () => {
+    setIsActiveColorBlindnessMenu(!isActiveColorBlindnessMenu);
+  };
   const handleTextToSpeechToggle = () => {
     setIsActiveTextToSpeech(!isActiveTextToSpeech);
   };
@@ -59,7 +68,7 @@ export function Sidebar() {
               </li>
               <li className="cursor-pointer">
                 <div className="p-2 bg-gray-700 rounded-sm hover:bg-gray-600 transition-colors">
-                  <FaEye size={32} />
+                  <FaEye onClick={handleColorBlindnessMenuToggle} size={32} />
                 </div>
               </li>
               <li className="cursor-pointer">
@@ -83,7 +92,9 @@ export function Sidebar() {
               </button>
             </li>
             <li>
-              <button>Modo Daltonismo</button>
+              <button onClick={handleColorBlindnessMenuToggle}>
+                Modo Daltonismo
+              </button>
             </li>
             <li>
               <button>Descrição de Imagem</button>
