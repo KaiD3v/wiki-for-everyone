@@ -29,6 +29,8 @@ export function ColorBlindnessFilterProvider({
     setMode(newMode);
   };
 
+  console.log("Modo de daltonismo:", mode);
+
   return (
     <ColorBlindnessFilterContext.Provider value={{ mode, switchMode }}>
       {children}

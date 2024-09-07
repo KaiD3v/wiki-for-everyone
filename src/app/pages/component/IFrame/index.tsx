@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useColorBlindnessFilter } from "../../../../context/ColorBlindnessFilterContext";
+import Head from "next/head";
 
 export function IFrame({ pageData }: any) {
   const [isMobile, setIsMobile] = useState(false);
+  const { mode } = useColorBlindnessFilter();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 640); 
+      setIsMobile(window.innerWidth <= 640);
     };
 
     handleResize();
@@ -17,6 +20,52 @@ export function IFrame({ pageData }: any) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const applyColorBlindnessFilter = (iframeDoc: Document) => {
+      const images = iframeDoc.querySelectorAll("img");
+
+      images.forEach((img) => {
+        switch (mode) {
+          case 'protanopia':
+            img.style.filter = "contrast(100%) sepia(100%) saturate(500%) hue-rotate(-20deg)";
+            break;
+          case 'deuteranopia':
+            img.style.filter = "contrast(100%) sepia(100%) saturate(500%) hue-rotate(0deg)";
+            break;
+          case 'tritanopia':
+            img.style.filter = "contrast(100%) sepia(100%) saturate(500%) hue-rotate(90deg)";
+            break;
+          case 'normal':
+          default:
+            img.style.filter = "none";
+            break;
+        }
+      });
+    };
+
+    const iframe = document.querySelector("iframe");
+    if (iframe) {
+      const onLoad = () => {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          applyColorBlindnessFilter(iframeDoc);
+        }
+      };
+
+      iframe.addEventListener("load", onLoad);
+
+      // Aplicar o filtro imediatamente se o iframe já estiver carregado
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+      if (iframeDoc) {
+        applyColorBlindnessFilter(iframeDoc);
+      }
+
+      return () => {
+        iframe.removeEventListener("load", onLoad);
+      };
+    }
+  }, [mode]);
 
   return (
     <>
