@@ -1,7 +1,7 @@
 "use client";
 
 import { AiFillSound } from "react-icons/ai";
-import { FaPlay, FaStop, FaX, FaPause } from "react-icons/fa6";
+import { FaPlay, FaStop, FaX, FaPause, FaImage } from "react-icons/fa6";
 import { useTextToSpeech } from "../../context/TextToSpeechIconContext";
 import { useEffect, useState } from "react";
 

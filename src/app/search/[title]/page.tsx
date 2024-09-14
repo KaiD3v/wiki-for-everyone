@@ -5,13 +5,16 @@ import Link from "next/link";
 
 async function getPages(title: string) {
   try {
+    const uncodedUri = decodeURI(title);
     const response = await fetch(
-      `${process.env.WIKI_API_URL}/search/page?q=${title}&limit=12`
-    ).then(res => res.json());
+      `${process.env.WIKI_API_URL}/search/page?q=${uncodedUri}&limit=12`
+    )
+      .then(res => res.json())
+      .then(data => data.pages);
 
-    console.log(title);
+    console.log(response);
 
-    return response.pages;
+    return response;
   } catch (error) {
     console.log("Houve um erro ao buscar pela pesquisa:" + error);
     return null;
@@ -57,7 +60,7 @@ export default async function SearchPage({
                 </Link>
               )
             : <p className="text-center col-span-full text-gray-500">
-                Nenhum resultado encontrado para "{title}".
+                Nenhum resultado encontrado para "{decodeURI(title)}".
               </p>}
         </div>
       </div>

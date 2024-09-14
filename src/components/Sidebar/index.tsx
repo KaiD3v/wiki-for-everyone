@@ -96,9 +96,6 @@ export function Sidebar() {
                 Modo Daltonismo
               </button>
             </li>
-            <li>
-              <button>Descrição de Imagem</button>
-            </li>
           </ul>
         </section>
       </div>

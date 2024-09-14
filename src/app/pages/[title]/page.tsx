@@ -1,6 +1,34 @@
-import { Container } from "../../../components/Container";
+import { Metadata } from "next";
 import { PageProps } from "../../../utils/types/PagesTypes";
 import { IFrame } from "../component/IFrame";
+
+interface PropsParams {
+  params: {
+    title: string;
+  };
+}
+
+export async function generateMetadata({
+  params
+}: PropsParams): Promise<Metadata> {
+  try {
+    const response = await fetch(
+      `${process.env.WIKI_API_URL}/page/${params.title}`,
+      { cache: "no-store" }
+    ).then(res => res.json());
+
+    console.log(response);
+
+    return {
+      title: `Wiki For Everyone | ${response.title}`,
+      description: `${response.source.slice(0, 100)}...`
+    };
+  } catch (error) {
+    return {
+      title: "Wiki For Everyone | A Knowledge Hub for All"
+    };
+  }
+}
 
 async function getPageData(title: string) {
   try {
