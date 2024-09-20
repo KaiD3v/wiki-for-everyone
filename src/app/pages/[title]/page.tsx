@@ -52,17 +52,12 @@ export default async function WikiPage({
 
   console.log(pageData);
   return (
-    <div className="flex items-center text-center justify-center w-full h-screen">
-      <main className=" flex sm:hidden max-w-fit">
-        <IFrame pageData={pageData} />
-      </main>
-      <main className="hidden sm:flex flex-col justify-center items-center w-full sm:p-8 bg-gray-50 min-h-screen">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
+    <div className="flex items-center justify-center w-full min-h-screen">
+      <main className="flex flex-col justify-center items-center w-full sm:p-8 bg-gray-50">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-12">
           {pageData.title}
         </h1>
-        <div className="w-full sm:max-w-6xl bg-white p-6 rounded-lg shadow-md">
-          <IFrame pageData={pageData} />
-        </div>
+        <IFrame pageData={pageData} />
       </main>
     </div>
   );

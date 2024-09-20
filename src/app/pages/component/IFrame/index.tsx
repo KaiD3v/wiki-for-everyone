@@ -1,25 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useColorBlindnessFilter } from "../../../../context/ColorBlindnessFilterContext";
-import Head from "next/head";
 
 export function IFrame({ pageData }: any) {
-  const [isMobile, setIsMobile] = useState(false);
   const { mode } = useColorBlindnessFilter();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 640);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     const applyColorBlindnessFilter = (iframeDoc: Document) => {
@@ -59,7 +44,6 @@ export function IFrame({ pageData }: any) {
 
       iframe.addEventListener("load", onLoad);
 
-      // Aplicar o filtro imediatamente se o iframe já estiver carregado
       const iframeDoc =
         iframe.contentDocument || iframe.contentWindow?.document;
       if (iframeDoc) {
@@ -72,26 +56,15 @@ export function IFrame({ pageData }: any) {
     }
   }, [mode]);
 
-  console.log("isMobile: ", isMobile);
-
   return (
-    <div className="flex justify-center items-center w-full h-full">
-      {isMobile ? (
+    <div className="flex justify-center items-center w-full min-h-screen p-4 sm:p-8 bg-gray-50">
+      <div className="w-full sm:max-w-6xl bg-white p-4 sm:p-6 rounded-lg shadow-md">
         <iframe
           srcDoc={pageData.html}
-          className="block sm:hidden w-full h-screen text-sm justify-center overflow-hidden bg-white rounded-lg shadow-md"
+          className="w-full h-[75vh] min-h-[500px] rounded-lg"
           sandbox="allow-scripts allow-same-origin"
         />
-      ) : (
-        <div className="w-full sm:max-w-6xl bg-white p-6 rounded-lg shadow-md">
-          <iframe
-            srcDoc={pageData.html}
-            className="w-full min-h-[500px] rounded-lg"
-            sandbox="allow-scripts allow-same-origin"
-            style={{ height: "75vh" }}
-          />
-        </div>
-      )}
+      </div>
     </div>
   );
 }

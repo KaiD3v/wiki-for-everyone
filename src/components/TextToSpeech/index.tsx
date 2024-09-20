@@ -1,9 +1,9 @@
 "use client";
 
 import { AiFillSound } from "react-icons/ai";
-import { FaPlay, FaStop, FaX, FaPause, FaImage } from "react-icons/fa6";
+import { FaPlay, FaStop, FaX, FaPause } from "react-icons/fa6";
 import { useTextToSpeech } from "../../context/TextToSpeechIconContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function SpeechIcon() {
   const { isActive, setIsActive } = useTextToSpeech();
@@ -20,6 +20,7 @@ export function SpeechIcon() {
 
     // Verifica se o conteúdo está dentro de um iframe
     const iframe = document.querySelector("iframe");
+    console.log(iframe?.textContent)
     if (iframe) {
       const iframeDoc =
         iframe.contentDocument || iframe.contentWindow?.document;
