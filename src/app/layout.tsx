@@ -9,6 +9,7 @@ import { TextToSpeechProvider } from "../context/TextToSpeechIconContext";
 import { ColorBlindnessFilterProvider } from "../context/ColorBlindnessFilterContext";
 import { ColorBlindnessMenuProvider } from "../context/ColorBlindnessFilterIconMenuContext";
 import { ColorBlindnessFilterMenu } from "../components/ColorBlindnessFilterMenu";
+import { Navbar } from "../components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,7 +31,8 @@ export default function RootLayout({
             <ColorBlindnessMenuProvider>
               <body className={`flex h-screen bg-gray-300 ${inter.className}`}>
                 <Sidebar />
-                <main className="flex-grow overflow-y-auto p-2 sm:p-8">
+                <main className="flex-grow overflow-y-auto">
+                <Navbar />
                   {children}
                   <VLibrasComponent />
                   <SpeechIcon />

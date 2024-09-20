@@ -47,7 +47,7 @@ export function Sidebar() {
               </span>
             </h1>
           </Link>
-          <hr className="w-full border-t-2 border-gray-500" />
+          <hr className="w-screen border-t-2 border-gray-500" />
         </header>
 
         {/* Small screen header */}
@@ -58,7 +58,7 @@ export function Sidebar() {
                 <FaBookAtlas size={32} />
               </h1>
             </Link>
-            <hr className="w-full border-t-2 border-gray-500" />
+            <hr className=" border-t-2  border-gray-500" />
           </header>
 
           {/* sm screen content */}
