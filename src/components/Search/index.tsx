@@ -88,7 +88,7 @@ export function Search() {
         </button>
       </div>
       <button
-        className="bg-white text-center text-black font-semibold rounded-md overflow-hidden shadow-lg w-full max-w-7xl py-2 px-4 border border-gray-300 hover:shadow-amber-200 hover:bg-gray-100 transition-all duration-300 cursor-pointer"
+        className="bg-white text-center text-black font-semibold rounded-md overflow-hidden shadow-lg w-full max-w-7xl py-2 px-4 border border-gray-300 hover:shadow-indigo-400 hover:bg-gray-100 transition-all duration-300 cursor-pointer"
         type="submit"
       >
         Pesquisar
