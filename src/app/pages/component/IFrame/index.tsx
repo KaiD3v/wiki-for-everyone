@@ -27,16 +27,19 @@ export function IFrame({ pageData }: any) {
 
       images.forEach((img) => {
         switch (mode) {
-          case 'protanopia':
-            img.style.filter = "contrast(100%) sepia(100%) saturate(500%) hue-rotate(-20deg)";
+          case "protanopia":
+            img.style.filter =
+              "contrast(100%) sepia(100%) saturate(500%) hue-rotate(-20deg)";
             break;
-          case 'deuteranopia':
-            img.style.filter = "contrast(100%) sepia(100%) saturate(500%) hue-rotate(0deg)";
+          case "deuteranopia":
+            img.style.filter =
+              "contrast(100%) sepia(100%) saturate(500%) hue-rotate(0deg)";
             break;
-          case 'tritanopia':
-            img.style.filter = "contrast(100%) sepia(100%) saturate(500%) hue-rotate(90deg)";
+          case "tritanopia":
+            img.style.filter =
+              "contrast(100%) sepia(100%) saturate(500%) hue-rotate(90deg)";
             break;
-          case 'normal':
+          case "normal":
           default:
             img.style.filter = "none";
             break;
@@ -47,7 +50,8 @@ export function IFrame({ pageData }: any) {
     const iframe = document.querySelector("iframe");
     if (iframe) {
       const onLoad = () => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           applyColorBlindnessFilter(iframeDoc);
         }
@@ -56,7 +60,8 @@ export function IFrame({ pageData }: any) {
       iframe.addEventListener("load", onLoad);
 
       // Aplicar o filtro imediatamente se o iframe já estiver carregado
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+      const iframeDoc =
+        iframe.contentDocument || iframe.contentWindow?.document;
       if (iframeDoc) {
         applyColorBlindnessFilter(iframeDoc);
       }
@@ -82,7 +87,6 @@ export function IFrame({ pageData }: any) {
         <iframe
           srcDoc={pageData.html}
           className="block sm:hidden w-screen h-full bg-white rounded-lg shadow-md"
-          sandbox="allow-scripts allow-same-origin"
         />
       )}
     </>
