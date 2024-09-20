@@ -72,9 +72,17 @@ export function IFrame({ pageData }: any) {
     }
   }, [mode]);
 
+  console.log("isMobile: ", isMobile);
+
   return (
-    <>
-      {!isMobile ? (
+    <div className="flex justify-center items-center w-full h-full">
+      {isMobile ? (
+        <iframe
+          srcDoc={pageData.html}
+          className="block sm:hidden w-full h-screen text-sm justify-center overflow-hidden bg-white rounded-lg shadow-md"
+          sandbox="allow-scripts allow-same-origin"
+        />
+      ) : (
         <div className="w-full sm:max-w-6xl bg-white p-6 rounded-lg shadow-md">
           <iframe
             srcDoc={pageData.html}
@@ -83,12 +91,7 @@ export function IFrame({ pageData }: any) {
             style={{ height: "75vh" }}
           />
         </div>
-      ) : (
-        <iframe
-          srcDoc={pageData.html}
-          className="block sm:hidden w-screen h-full bg-white rounded-lg shadow-md"
-        />
       )}
-    </>
+    </div>
   );
 }

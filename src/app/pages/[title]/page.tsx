@@ -53,6 +53,9 @@ export default async function WikiPage({
   console.log(pageData);
   return (
     <div className="flex items-center text-center justify-center w-full h-screen">
+      <main className=" flex sm:hidden max-w-fit">
+        <IFrame pageData={pageData} />
+      </main>
       <main className="hidden sm:flex flex-col justify-center items-center w-full sm:p-8 bg-gray-50 min-h-screen">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
           {pageData.title}
