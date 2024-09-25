@@ -10,6 +10,7 @@ import { ColorBlindnessFilterProvider } from "../context/ColorBlindnessFilterCon
 import { ColorBlindnessMenuProvider } from "../context/ColorBlindnessFilterIconMenuContext";
 import { ColorBlindnessFilterMenu } from "../components/ColorBlindnessFilterMenu";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
                   <VLibrasComponent />
                   <SpeechIcon />
                   <ColorBlindnessFilterMenu />
+                  <Footer />
                 </main>
               </body>
             </ColorBlindnessMenuProvider>
