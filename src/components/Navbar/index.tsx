@@ -8,7 +8,7 @@ export function Navbar() {
           <Link className="cursor-pointer hover:text-gray-300 transition-all" href={"/login"}>Login</Link>
         </li>
         <li>
-          <Link className="cursor-pointer hover:text-gray-300 transition-all" href={"/sobre"}>Sobre</Link>
+          <Link className="cursor-pointer hover:text-gray-300 transition-all" href={"/about"}>Sobre</Link>
         </li>
       </ul>
     </header>
