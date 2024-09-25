@@ -9,8 +9,8 @@ async function getPages(title: string) {
     const response = await fetch(
       `${process.env.WIKI_API_URL}/search/page?q=${uncodedUri}&limit=12`
     )
-      .then(res => res.json())
-      .then(data => data.pages);
+      .then((res) => res.json())
+      .then((data) => data.pages);
 
     console.log(response);
 
@@ -22,7 +22,7 @@ async function getPages(title: string) {
 }
 
 export default async function SearchPage({
-  params: { title }
+  params: { title },
 }: {
   params: { title: string };
 }) {
@@ -30,7 +30,7 @@ export default async function SearchPage({
 
   console.log(data);
   return (
-    <Container>
+    <div className="max-w-screen-xl mx-auto px-3 my-8">
       <div className="search-container mb-8">
         <Search />
       </div>
@@ -40,30 +40,32 @@ export default async function SearchPage({
           Resultados da sua pesquisa para "{decodeURI(title)}"
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-          {data && data.length > 0
-            ? data.map(item =>
-                <Link
-                  className="bg-white min-h-30 max-h-30 cursor-pointer overflow-hidden rounded-lg shadow-md p-4 flex flex-col hover:bg-blue-200 transition-all duration-300"
-                  key={item.id}
-                  href={`/pages/${item.title}`}
-                >
-                  <header className="mb-4">
-                    <h2 className="text-xl font-semibold text-gray-800">
-                      {item.title}
-                    </h2>
-                  </header>
-                  <main className="flex-1">
-                    <p className="text-gray-600">
-                      {item.description || "Sem descrição disponível."}
-                    </p>
-                  </main>
-                </Link>
-              )
-            : <p className="text-center col-span-full text-gray-500">
-                Nenhum resultado encontrado para "{decodeURI(title)}".
-              </p>}
+          {data && data.length > 0 ? (
+            data.map((item) => (
+              <Link
+                className="bg-white min-h-30 max-h-30 cursor-pointer overflow-hidden rounded-lg shadow-md p-4 flex flex-col hover:bg-blue-200 transition-all duration-300"
+                key={item.id}
+                href={`/pages/${item.title}`}
+              >
+                <header className="mb-4">
+                  <h2 className="text-xl font-semibold text-gray-800">
+                    {item.title}
+                  </h2>
+                </header>
+                <main className="flex-1">
+                  <p className="text-gray-600">
+                    {item.description || "Sem descrição disponível."}
+                  </p>
+                </main>
+              </Link>
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-500">
+              Nenhum resultado encontrado para "{decodeURI(title)}".
+            </p>
+          )}
         </div>
       </div>
-    </Container>
+    </div>
   );
 }

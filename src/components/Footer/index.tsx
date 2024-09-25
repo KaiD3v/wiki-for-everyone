@@ -2,7 +2,7 @@ import { FaBookAtlas, FaGithub } from "react-icons/fa6";
 
 export function Footer() {
   return (
-    <footer className="flex flex-col justify-center items-center text-white bg-gradient-to-r h-full max-h-32 from-gray-900 to-gray-800 shadow-lg border-t-2 border-gray-500">
+    <footer className="flex flex-col bottom-0 justify-center items-center text-white bg-gradient-to-r h-full max-h-32 from-gray-900 to-gray-800 shadow-lg border-t-2 border-gray-500">
       <main className="flex flex-col w-full mx-auto justify-center items-center">
         <h1 className="flex mx-auto  gap-2 items-center font-extralight sm:text-xl text-center text-indigo-300 tracking-widest">
           <FaBookAtlas size={22} /> Wiki
