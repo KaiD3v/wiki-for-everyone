@@ -17,7 +17,7 @@ export default function Sobre() {
         <p className="text-lg max-w-3xl mx-auto mt-4 leading-relaxed">
           O projeto teve início como parte de um trabalho universitário na
           disciplina de Análise e Desenvolvimento de Sistemas da Uninter.
-          Totalmente open source, o código está disponível no GitHub, permitindo
+          Totalmente open source, o código está disponível no <a className="text-blue-300 hover:text-blue-400 hover:underline transition-all" href="https://github.com/KaiD3v/wiki-for-everyone">GitHub</a>, permitindo
           que desenvolvedores e colaboradores contribuam com novas ideias,
           relatem problemas ou até implementem melhorias.
         </p>
