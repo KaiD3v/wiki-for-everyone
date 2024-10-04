@@ -1,6 +1,6 @@
 import { SubMenu } from "./components";
 
-export default function Sobre() {
+export default function About() {
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200">
       <SubMenu />
